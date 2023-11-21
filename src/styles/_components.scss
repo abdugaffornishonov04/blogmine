@@ -1,0 +1,229 @@
+$mainColor: #10253C;
+$secondaryColor: #1a3c60;
+$thirdColor: #ffbf00;
+$greenColor: #3ded97;
+
+@mixin commonBtn {
+  background-color: $thirdColor;
+  color: $mainColor;
+  font-family: "Lato";
+  padding: 10px 20px;
+  border: none;
+  border-radius: 16px;
+  transition: 0.2s;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: $mainColor;
+    color: $thirdColor;
+    border: 1px solid $thirdColor;
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  background-color: $secondaryColor;
+  display: flex;
+  justify-content: space-between;
+
+  .header-list-responsive {
+    height: 100vh;
+    width: 80%;
+
+    display: flex;
+    background-color: $secondaryColor;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    position: absolute;
+    right: 0;
+    z-index: 1120;
+    -webkit-box-shadow: -12px 1px 9px -10px rgba(255, 255, 255, 0.2);
+    -moz-box-shadow: -12px 1px 9px -10px rgba(255, 255, 255, 0.2);
+    box-shadow: -12px 1px 9px -10px rgba(255, 255, 255, 0.2);
+
+    li .header-page-links {
+      color: #fff;
+    }
+  }
+
+  .header-logo {
+    text-transform: uppercase;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    background-color: $thirdColor;
+    color: $mainColor;
+    font-weight: 700;
+    @include flexCenter();
+
+    @media (max-width:790px) {
+      display: none;
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+
+
+    @media(max-width:550px) {
+      display: flex;
+      justify-content: start;
+      padding-left: 20px;
+    }
+
+    .header-hamburger-on-responsive {
+      display: none;
+
+      @media(max-width:550px) {
+        display: flex;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: none;
+
+        @media(max-width:550px) {
+          display: flex;
+        }
+
+        img {
+          width: 100%;
+        }
+
+      }
+
+    }
+
+    .header-list {
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+
+      @media(max-width:550px) {
+        display: none;
+      }
+
+      li .header-page-links {
+        color: #fff;
+        font-size: 17px;
+        position: relative;
+        padding-bottom: 5px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background-color: #fff;
+          transition: width 0.5s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &:not(:hover)::after {
+          width: 0%;
+          transition: width 0.5s ease;
+        }
+      }
+    }
+  }
+
+  .header-options-wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    @media(max-width:550px) {
+      padding-right: 20px;
+    }
+
+    .options-btn {
+      @include commonBtn();
+      width: 130px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .options-other-btns {
+      display: none;
+      transition: 0.4s;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+// react related classes
+
+
+.options-other-btns-appear {
+  display: flex;
+  position: absolute;
+  top: 85px;
+  left: 25px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: 0.4s;
+  z-index: 1119;
+
+  .header-login {
+    @include commonBtn();
+    @include flexCenter();
+    width: 100px;
+  }
+
+  .header-sign-up {
+    @include commonBtn();
+    @include flexCenter();
+    width: 100px;
+  }
+
+  .header-dark-light {
+    width: 100px;
+    @include commonBtn();
+    @include flexCenter();
+  }
+}
+
+.header-list-responsive-shown-onclick {
+  display: flex !important;
+}
+
+.header-list-responsive-none {
+  display: none;
+}
+
+// check out 
+//{header: done except for responsive. responsive is also done, what is left is the menus appeareance when hamburger is clicked. {update ->} Header's everything is done}
